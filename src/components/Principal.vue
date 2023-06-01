@@ -21,6 +21,18 @@ export default {
         .then(result => {
           console.log(result.data.response);
           this.pushInArray(result.data.response);
+
+          if(store.arrayOfWord.length === 4) {
+            store.savedString = store.arrayOfWord.join(" ");
+            let firstChar = store.savedString.charAt(0);
+            let upperChar = firstChar.toUpperCase();
+            store.modifiedString = upperChar + store.savedString.slice(1);
+
+            console.log(store.savedString);
+            console.log(store.modifiedString + ".");
+
+          }
+
         })
     },
     pushInArray(word) {
@@ -33,14 +45,11 @@ export default {
         
       }
     },
-    logOfArray() {
-      console.log(store.arrayOfWord);
-    }
+
 
   },
   mounted() {
     this.arrayDimension(4);
-    this.logOfArray();
   }
 }
 </script>
